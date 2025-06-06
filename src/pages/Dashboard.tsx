@@ -12,54 +12,98 @@ import {
   useEdgesState,
   Connection,
   Panel,
+  NodeTypes,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import { Search, Upload, MessageSquare, Brain, Settings, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import CustomNode, { CustomNodeData } from '@/components/CustomNode';
+import TimeFilter from '@/components/TimeFilter';
+import GraphActions from '@/components/GraphActions';
 
-const initialNodes: Node[] = [
+const nodeTypes: NodeTypes = {
+  custom: CustomNode,
+};
+
+const initialNodes: Node<CustomNodeData>[] = [
   {
     id: '1',
-    type: 'default',
+    type: 'custom',
     position: { x: 400, y: 300 },
-    data: { label: 'Knowledge graph' },
-    style: { backgroundColor: '#1e293b', color: '#fff', border: '1px solid #475569' }
+    data: { 
+      label: 'Knowledge graph', 
+      type: 'topic',
+      snippet: 'Building a personal memory engine with graph visualization...',
+      timestamp: 'March 15, 2025',
+      tags: ['memory', 'graph', 'ai'],
+      conversationCount: 8
+    }
   },
   {
     id: '2',
-    type: 'default',
+    type: 'custom',
     position: { x: 600, y: 200 },
-    data: { label: 'AI Agent' },
-    style: { backgroundColor: '#1e293b', color: '#fff', border: '1px solid #475569' }
+    data: { 
+      label: 'AI Agent', 
+      type: 'tool',
+      snippet: 'Discussed creating autonomous agents for memory retrieval...',
+      timestamp: 'March 12, 2025',
+      tags: ['ai', 'automation'],
+      conversationCount: 3
+    }
   },
   {
     id: '3',
-    type: 'default',
+    type: 'custom',
     position: { x: 200, y: 400 },
-    data: { label: 'Recall' },
-    style: { backgroundColor: '#1e293b', color: '#fff', border: '1px solid #475569' }
+    data: { 
+      label: 'Recall', 
+      type: 'conversation',
+      snippet: 'Long conversation about building Recall OS features...',
+      timestamp: 'March 10, 2025',
+      tags: ['recall', 'features'],
+      conversationCount: 15
+    }
   },
   {
     id: '4',
-    type: 'default',
+    type: 'custom',
     position: { x: 500, y: 500 },
-    data: { label: 'Special report' },
-    style: { backgroundColor: '#1e293b', color: '#fff', border: '1px solid #475569' }
+    data: { 
+      label: 'Special report', 
+      type: 'bookmark',
+      snippet: 'Bookmarked insights about vector databases comparison...',
+      timestamp: 'March 8, 2025',
+      tags: ['research', 'vectors'],
+      conversationCount: 1
+    }
   },
   {
     id: '5',
-    type: 'default',
+    type: 'custom',
     position: { x: 800, y: 350 },
-    data: { label: 'Telegram bot' },
-    style: { backgroundColor: '#1e293b', color: '#fff', border: '1px solid #475569' }
+    data: { 
+      label: 'Telegram bot', 
+      type: 'tool',
+      snippet: 'Building a bot for automated memory ingestion...',
+      timestamp: 'March 5, 2025',
+      tags: ['bot', 'automation'],
+      conversationCount: 5
+    }
   },
   {
     id: '6',
-    type: 'default',
+    type: 'custom',
     position: { x: 700, y: 450 },
-    data: { label: 'GPT for sites' },
-    style: { backgroundColor: '#1e293b', color: '#fff', border: '1px solid #475569' }
+    data: { 
+      label: 'GPT for sites', 
+      type: 'topic',
+      snippet: 'Website integration strategies for AI assistants...',
+      timestamp: 'March 3, 2025',
+      tags: ['integration', 'web'],
+      conversationCount: 2
+    }
   }
 ];
 
@@ -75,11 +119,27 @@ const Dashboard = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedNodes, setSelectedNodes] = useState<string[]>([]);
 
   const onConnect = useCallback(
     (params: Connection) => setEdges((eds) => addEdge(params, eds)),
     [setEdges]
   );
+
+  const handleTimeRangeChange = (range: string) => {
+    console.log('Time range changed to:', range);
+    // TODO: Filter nodes based on time range
+  };
+
+  const handleGraphAction = (action: string, query?: string) => {
+    console.log('Graph action:', action, query);
+    // TODO: Implement LLM-powered actions
+  };
+
+  const onSelectionChange = useCallback((params: any) => {
+    const selectedNodeIds = params.nodes.map((node: Node) => node.id);
+    setSelectedNodes(selectedNodeIds);
+  }, []);
 
   return (
     <div className="h-screen bg-slate-900 flex">
@@ -93,7 +153,7 @@ const Dashboard = () => {
           <div className="relative">
             <Search className="w-4 h-4 absolute left-3 top-3 text-slate-400" />
             <Input
-              placeholder="Search"
+              placeholder="Search memories..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-10 bg-slate-700 border-slate-600 text-white placeholder-slate-400"
@@ -122,14 +182,19 @@ const Dashboard = () => {
           </div>
 
           <div className="mt-8">
-            <h3 className="text-sm font-medium text-slate-400 mb-2">Productivity</h3>
+            <h3 className="text-sm font-medium text-slate-400 mb-2">Recent Activity</h3>
             <div className="space-y-1 ml-2">
               <div className="text-sm text-slate-300 flex items-center gap-2">
-                <div className="w-2 h-2 bg-pink-400 rounded-full"></div>
-                AI Agent Chatbot + L...
+                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                AI Agent Conversations
               </div>
-              <div className="text-sm text-slate-300">
-                March 2025: Detailed Recall...
+              <div className="text-sm text-slate-300 flex items-center gap-2">
+                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                Memory Graph Updates
+              </div>
+              <div className="text-sm text-slate-300 flex items-center gap-2">
+                <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                New Tool Integrations
               </div>
             </div>
           </div>
@@ -144,28 +209,49 @@ const Dashboard = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 relative">
-        <ReactFlow
-          nodes={nodes}
-          edges={edges}
-          onNodesChange={onNodesChange}
-          onEdgesChange={onEdgesChange}
-          onConnect={onConnect}
-          className="bg-slate-900"
-          fitView
-        >
-          <Background color="#475569" />
-          <Controls className="bg-slate-800 border-slate-600" />
-          <MiniMap 
-            nodeColor="#1e293b"
-            className="bg-slate-800 border border-slate-600"
-          />
-          <Panel position="top-right" className="bg-slate-800 border border-slate-600 rounded p-2">
-            <div className="text-white text-sm">
-              1 / 10
-            </div>
-          </Panel>
-        </ReactFlow>
+      <div className="flex-1 flex flex-col">
+        {/* Controls Panel */}
+        <div className="p-4 bg-slate-800 border-b border-slate-700">
+          <TimeFilter onTimeRangeChange={handleTimeRangeChange} />
+        </div>
+
+        {/* Graph and Actions */}
+        <div className="flex-1 flex">
+          {/* React Flow */}
+          <div className="flex-1 relative">
+            <ReactFlow
+              nodes={nodes}
+              edges={edges}
+              onNodesChange={onNodesChange}
+              onEdgesChange={onEdgesChange}
+              onConnect={onConnect}
+              onSelectionChange={onSelectionChange}
+              nodeTypes={nodeTypes}
+              className="bg-slate-900"
+              fitView
+            >
+              <Background color="#475569" />
+              <Controls className="bg-slate-800 border-slate-600" />
+              <MiniMap 
+                nodeColor="#1e293b"
+                className="bg-slate-800 border border-slate-600"
+              />
+              <Panel position="top-right" className="bg-slate-800 border border-slate-600 rounded p-2">
+                <div className="text-white text-sm">
+                  {nodes.length} memories
+                </div>
+              </Panel>
+            </ReactFlow>
+          </div>
+
+          {/* Actions Panel */}
+          <div className="w-80 p-4 bg-slate-900">
+            <GraphActions 
+              selectedNodes={selectedNodes}
+              onAction={handleGraphAction}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
