@@ -116,7 +116,7 @@ const initialEdges: Edge[] = [
 ];
 
 const Dashboard = () => {
-  const [nodes, setNodes, onNodesChange] = useNodesState<CustomNodeData>(initialNodes);
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedNodes, setSelectedNodes] = useState<string[]>([]);
