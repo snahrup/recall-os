@@ -11,6 +11,7 @@ interface ImageDisplayProps
   size?: 'thumbnail' | 'small' | 'medium' | 'large';
   showZoom?: boolean;
   fallback?: React.ReactNode;
+  onClick?: React.MouseEventHandler<HTMLImageElement>;
 }
 
 const ImageDisplay: React.FC<ImageDisplayProps> = ({
