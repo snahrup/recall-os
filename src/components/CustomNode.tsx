@@ -11,7 +11,6 @@ export interface CustomNodeData {
   timestamp?: string;
   tags?: string[];
   conversationCount?: number;
-  [key: string]: unknown; // Add index signature for React Flow compatibility
 }
 
 const CustomNode: React.FC<NodeProps<CustomNodeData>> = ({ id, data }) => {

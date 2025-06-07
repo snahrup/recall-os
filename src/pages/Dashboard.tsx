@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { ReactFlow, Node, Edge, Background, Controls } from '@xyflow/react';
 import { CustomNodeData } from '@/components/CustomNode';
 import CustomNode from '@/components/CustomNode';
-import NodeHoverCard from '@/components/NodeHoverCard';
 import GraphActions from '@/components/GraphActions';
 import TimeFilter from '@/components/TimeFilter';
 import Layout from '@/components/Layout';
@@ -120,6 +119,11 @@ const Dashboard = () => {
     );
   };
 
+  const handleGraphAction = (action: string, query?: string) => {
+    console.log('Graph action:', action, query);
+    // Implement graph actions here
+  };
+
   const generateNodesFromChatHistory = () => {
     if (!chatSessions || chatSessions.length === 0) return;
 
@@ -171,7 +175,7 @@ const Dashboard = () => {
           </div>
           <GraphActions 
             selectedNodes={selectedNodes}
-            onClearSelection={() => setSelectedNodes([])}
+            onAction={handleGraphAction}
           />
         </div>
 
