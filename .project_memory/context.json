@@ -1,0 +1,11 @@
+{
+  "project": "Recall OS",
+  "tech_stack": ["React", "Vite", "TypeScript", "Tailwind", "shadcn-ui"],
+  "backend": "Supabase",
+  "pages": ["Home", "Dashboard(Graph)", "Review", "Settings"],
+  "key_components": ["CustomNode", "GraphActions", "ImageDisplay", "Layout"],
+  "data_hooks": ["useChatHistory"],
+  "supabase_url": "https://wgmjhfxqcaefsfqdvkib.supabase.co",
+  "schema_tables": ["candles", "chat_history", "patterns"],
+  "last_commit": "Implement image display features"
+}
