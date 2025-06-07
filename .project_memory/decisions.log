@@ -1,0 +1,8 @@
+# Decision Log
+
+- Chose Vite + React + TypeScript as the tech stack (commit fa57a36).
+- Integrated Supabase as the backend database (commit b19bd82).
+- Implemented graph visualization with React Flow (commit 0edf97f and later).
+- Added Home, Review, and Settings pages (commit 21c1103).
+- Introduced a microservice for long‑term memory and SQL migrations (commit 782609b).
+- Added image support for nodes and memory items (commit aabd5d4).

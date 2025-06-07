@@ -1,0 +1,1 @@
+The project aims to build **Recall OS**, a web application for managing and reviewing personal knowledge. It visualizes memories (conversations, notes, bookmarks) as a graph, provides dashboards and review pages, and stores data in Supabase. Confirm exact goals with the project owner.
