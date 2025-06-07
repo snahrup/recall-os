@@ -13,7 +13,7 @@ export interface CustomNodeData {
   conversationCount?: number;
   imageUrl?: string;
   images?: string[];
-  [key: string]: any; // Add index signature for React Flow compatibility
+  [key: string]: unknown; // Add index signature for React Flow compatibility
 }
 
 const CustomNode: React.FC<NodeProps<CustomNodeData>> = ({ id, data }) => {
