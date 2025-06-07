@@ -264,8 +264,9 @@ const Review = () => {
             </CardContent>
           </Card>
         </div>
+        </div>
       </div>
-    </Layout>
+      </Layout>
   );
 };
 

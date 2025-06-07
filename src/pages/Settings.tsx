@@ -300,6 +300,7 @@ const Settings = () => {
           </CardContent>
         </Card>
       </div>
+    </div>
     </Layout>
   );
 };

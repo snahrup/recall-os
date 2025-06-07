@@ -31,5 +31,5 @@ export interface MemoryItem {
   tags: string[];
   images?: string[];
   thumbnail?: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }

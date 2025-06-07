@@ -19,7 +19,7 @@ function setupMatchMedia() {
         listeners = listeners.filter(l => l !== cb)
       },
       dispatchEvent: vi.fn(),
-    } as any
+    } as unknown as MediaQueryList
   }))
   return (width: number) => {
     window.innerWidth = width

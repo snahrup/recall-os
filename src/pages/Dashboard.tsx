@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { ReactFlow, Node, Edge, Background, Controls } from '@xyflow/react';
+import { ReactFlow, Node, Edge, Background, Controls, type NodeChange, type EdgeChange } from '@xyflow/react';
 import { CustomNodeData } from '@/components/CustomNode';
 import CustomNode from '@/components/CustomNode';
 import GraphActions from '@/components/GraphActions';
@@ -109,11 +109,11 @@ const Dashboard = () => {
   const [selectedNodes, setSelectedNodes] = useState<string[]>([]);
   const [timeFilter, setTimeFilter] = useState('all');
 
-  const handleNodesChange = (changes: any) => {
+  const handleNodesChange = (changes: NodeChange[]) => {
     console.log('Nodes changed:', changes);
   };
 
-  const handleEdgesChange = (changes: any) => {
+  const handleEdgesChange = (changes: EdgeChange[]) => {
     console.log('Edges changed:', changes);
   };
 

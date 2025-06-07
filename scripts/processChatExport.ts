@@ -24,11 +24,20 @@ async function main() {
   const json = await convEntry.buffer();
   const conversations = JSON.parse(json.toString());
 
+  interface MappingNode {
+    message?: {
+      id: string;
+      author: { role: string };
+      content?: { parts: string[] };
+      create_time: number;
+    };
+  }
+
   for (const convo of conversations) {
     const sessionId = convo.id;
     const title = convo.title;
-    const mapping = convo.mapping || {};
-    const messages = Object.values(mapping) as any[];
+  const mapping = convo.mapping || {};
+  const messages = Object.values(mapping) as MappingNode[];
     messages.sort((a, b) => (a.message?.create_time || 0) - (b.message?.create_time || 0));
 
     let index = 0;

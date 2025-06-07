@@ -227,6 +227,7 @@ const Home = () => {
           </Card>
         </div>
       </div>
+      </div>
     </Layout>
   );
 };
