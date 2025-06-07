@@ -3,6 +3,8 @@ import React from 'react';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 import { Button } from '@/components/ui/button';
 import { MessageSquare, Clock, Tag, Eye, BookOpen, Flag } from 'lucide-react';
+import ImageDisplay from './ImageDisplay';
+import ImageGallery from './ImageGallery';
 
 interface NodeData {
   id: string;
@@ -12,6 +14,8 @@ interface NodeData {
   timestamp?: string;
   tags?: string[];
   conversationCount?: number;
+  imageUrl?: string;
+  images?: string[];
 }
 
 interface NodeHoverCardProps {
@@ -35,6 +39,8 @@ const NodeHoverCard: React.FC<NodeHoverCardProps> = ({ nodeData, children }) => 
     }
   };
 
+  const hasImages = nodeData.imageUrl || (nodeData.images && nodeData.images.length > 0);
+
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
@@ -47,6 +53,26 @@ const NodeHoverCard: React.FC<NodeHoverCardProps> = ({ nodeData, children }) => 
             {getNodeIcon(nodeData.type)}
             <h3 className="font-semibold text-sm">{nodeData.label}</h3>
           </div>
+
+          {/* Images */}
+          {hasImages && (
+            <div>
+              {nodeData.imageUrl && (
+                <ImageDisplay 
+                  src={nodeData.imageUrl} 
+                  size="small" 
+                  className="mb-2"
+                />
+              )}
+              {nodeData.images && nodeData.images.length > 0 && (
+                <ImageGallery 
+                  images={nodeData.images} 
+                  thumbnailSize="small"
+                  maxVisible={2}
+                />
+              )}
+            </div>
+          )}
 
           {/* Snippet */}
           {nodeData.snippet && (

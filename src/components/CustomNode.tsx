@@ -1,7 +1,7 @@
 
 import React, { memo } from 'react';
 import { Handle, Position, NodeProps } from '@xyflow/react';
-import { MessageSquare, Brain, Bot, Bookmark } from 'lucide-react';
+import { MessageSquare, Brain, Bot, Bookmark, Image } from 'lucide-react';
 import NodeHoverCard from './NodeHoverCard';
 
 export interface CustomNodeData {
@@ -11,6 +11,9 @@ export interface CustomNodeData {
   timestamp?: string;
   tags?: string[];
   conversationCount?: number;
+  imageUrl?: string;
+  images?: string[];
+  [key: string]: any; // Add index signature for React Flow compatibility
 }
 
 const CustomNode: React.FC<NodeProps<CustomNodeData>> = ({ id, data }) => {
@@ -45,6 +48,8 @@ const CustomNode: React.FC<NodeProps<CustomNodeData>> = ({ id, data }) => {
     }
   };
 
+  const hasImages = data.imageUrl || (data.images && data.images.length > 0);
+
   return (
     <NodeHoverCard 
       nodeData={{
@@ -54,7 +59,9 @@ const CustomNode: React.FC<NodeProps<CustomNodeData>> = ({ id, data }) => {
         snippet: data.snippet,
         timestamp: data.timestamp,
         tags: data.tags,
-        conversationCount: data.conversationCount
+        conversationCount: data.conversationCount,
+        imageUrl: data.imageUrl,
+        images: data.images
       }}
     >
       <div className={getNodeStyles(data.type)}>
@@ -66,6 +73,9 @@ const CustomNode: React.FC<NodeProps<CustomNodeData>> = ({ id, data }) => {
         <div className="flex items-center gap-2">
           {getNodeIcon(data.type)}
           <span className="max-w-24 truncate">{data.label}</span>
+          {hasImages && (
+            <Image className="w-2 h-2 text-slate-400" />
+          )}
         </div>
         <Handle
           type="source"

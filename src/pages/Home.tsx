@@ -4,6 +4,7 @@ import { Brain, TrendingUp, MessageSquare, Upload, Search, Sparkles } from 'luci
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import ImageDisplay from '@/components/ImageDisplay';
 
 const Home = () => {
   const memoryStats = [
@@ -18,19 +19,22 @@ const Home = () => {
       title: 'AI Agents in March',
       summary: 'Deep dive into autonomous agents, tool usage patterns, and memory retrieval strategies.',
       tags: ['ai', 'agents', 'automation'],
-      conversations: 8
+      conversations: 8,
+      imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400'
     },
     {
       title: 'Vector DB Research',
       summary: 'Comparison of pgvector, Weaviate, and Pinecone for semantic search implementations.',
       tags: ['vectors', 'database', 'search'],
-      conversations: 5
+      conversations: 5,
+      imageUrl: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400'
     },
     {
       title: 'Recall OS Development',
       summary: 'Building a personal memory engine with graph visualization and LLM integration.',
       tags: ['recall', 'memory', 'graph'],
-      conversations: 15
+      conversations: 15,
+      imageUrl: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=400'
     }
   ];
 
@@ -81,25 +85,38 @@ const Home = () => {
             <CardContent className="space-y-4">
               {memorySnapshots.map((snapshot, index) => (
                 <div key={index} className="p-4 bg-slate-700 rounded-lg border border-slate-600">
-                  <h3 className="font-semibold text-white mb-2">{snapshot.title}</h3>
-                  <p className="text-slate-300 text-sm mb-3">{snapshot.summary}</p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex gap-2">
-                      {snapshot.tags.map((tag, tagIndex) => (
-                        <span key={tagIndex} className="px-2 py-1 bg-blue-600 text-blue-100 text-xs rounded">
-                          {tag}
-                        </span>
-                      ))}
+                  <div className="flex gap-4">
+                    {snapshot.imageUrl && (
+                      <div className="flex-shrink-0">
+                        <ImageDisplay 
+                          src={snapshot.imageUrl} 
+                          size="small" 
+                          alt={snapshot.title}
+                        />
+                      </div>
+                    )}
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-white mb-2">{snapshot.title}</h3>
+                      <p className="text-slate-300 text-sm mb-3">{snapshot.summary}</p>
+                      <div className="flex items-center justify-between">
+                        <div className="flex gap-2">
+                          {snapshot.tags.map((tag, tagIndex) => (
+                            <span key={tagIndex} className="px-2 py-1 bg-blue-600 text-blue-100 text-xs rounded">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        <span className="text-slate-400 text-xs">{snapshot.conversations} conversations</span>
+                      </div>
+                      <div className="mt-3 flex gap-2">
+                        <Button size="sm" variant="ghost" className="text-blue-400 hover:text-blue-300">
+                          View Graph
+                        </Button>
+                        <Button size="sm" variant="ghost" className="text-slate-400 hover:text-slate-300">
+                          Review
+                        </Button>
+                      </div>
                     </div>
-                    <span className="text-slate-400 text-xs">{snapshot.conversations} conversations</span>
-                  </div>
-                  <div className="mt-3 flex gap-2">
-                    <Button size="sm" variant="ghost" className="text-blue-400 hover:text-blue-300">
-                      View Graph
-                    </Button>
-                    <Button size="sm" variant="ghost" className="text-slate-400 hover:text-slate-300">
-                      Review
-                    </Button>
                   </div>
                 </div>
               ))}
@@ -127,7 +144,7 @@ const Home = () => {
                 <div className="h-20 border-2 border-dashed border-slate-600 rounded-lg flex flex-col items-center justify-center text-slate-400 hover:border-slate-500 transition-colors cursor-pointer">
                   <Upload className="w-6 h-6 mb-2" />
                   Drag & Drop Files
-                  <span className="text-xs">.md, .txt, .json</span>
+                  <span className="text-xs">.md, .txt, .json, images</span>
                 </div>
               </div>
               <div className="flex gap-2">

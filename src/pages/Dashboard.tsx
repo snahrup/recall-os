@@ -32,7 +32,8 @@ const Dashboard = () => {
         snippet: 'Exploration of vector database technologies for AI applications',
         timestamp: '2024-01-15',
         tags: ['AI', 'Database', 'Vector'],
-        conversationCount: 5
+        conversationCount: 5,
+        imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400'
       }
     },
     {
@@ -45,7 +46,11 @@ const Dashboard = () => {
         snippet: 'Vector database service with real-time updates',
         timestamp: '2024-01-16',
         tags: ['Vector', 'Cloud'],
-        conversationCount: 3
+        conversationCount: 3,
+        images: [
+          'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400',
+          'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=400'
+        ]
       }
     },
     {
@@ -71,7 +76,8 @@ const Dashboard = () => {
         snippet: 'Retrieval Augmented Generation implementation patterns',
         timestamp: '2024-01-18',
         tags: ['RAG', 'Architecture'],
-        conversationCount: 4
+        conversationCount: 4,
+        imageUrl: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400'
       }
     }
   ]);
