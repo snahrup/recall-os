@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import Layout from '@/components/Layout';
 
 const Review = () => {
   const [timeRange, setTimeRange] = useState('week');
@@ -78,7 +79,8 @@ const Review = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white p-6">
+    <Layout>
+      <div className="min-h-screen bg-slate-900 text-white p-6">
       {/* Header */}
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-white mb-2">Memory Review</h1>
@@ -263,7 +265,7 @@ const Review = () => {
           </Card>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

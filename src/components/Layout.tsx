@@ -83,10 +83,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         </nav>
 
         <div className="p-4 border-t border-slate-700">
-          <Button className="w-full bg-blue-600 hover:bg-blue-700">
-            <Upload className="w-4 h-4 mr-2" />
-            Import Conversations
-          </Button>
+          <Link to="/import">
+            <Button className="w-full bg-blue-600 hover:bg-blue-700">
+              <Upload className="w-4 h-4 mr-2" />
+              Import Conversations
+            </Button>
+          </Link>
         </div>
       </div>
 
