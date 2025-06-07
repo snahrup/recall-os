@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Image as ImageIcon, X, ZoomIn } from 'lucide-react';
 
-interface ImageDisplayProps {
+interface ImageDisplayProps
+  extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string;
   alt?: string;
   className?: string;
@@ -12,13 +13,15 @@ interface ImageDisplayProps {
   fallback?: React.ReactNode;
 }
 
-const ImageDisplay: React.FC<ImageDisplayProps> = ({ 
-  src, 
-  alt = 'Image', 
+const ImageDisplay: React.FC<ImageDisplayProps> = ({
+  src,
+  alt = 'Image',
   className,
   size = 'medium',
   showZoom = true,
-  fallback
+  fallback,
+  onClick,
+  ...props
 }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -79,7 +82,11 @@ const ImageDisplay: React.FC<ImageDisplayProps> = ({
           )}
           onLoad={handleImageLoad}
           onError={handleImageError}
-          onClick={() => showZoom && setIsExpanded(true)}
+          onClick={(e) => {
+            if (showZoom) setIsExpanded(true);
+            onClick?.(e);
+          }}
+          {...props}
         />
         {showZoom && !isLoading && (
           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-black/20 rounded flex items-center justify-center">
