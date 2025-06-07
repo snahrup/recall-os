@@ -57,6 +57,39 @@ export type Database = {
         }
         Relationships: []
       }
+      chat_history: {
+        Row: {
+          content: string
+          created_at: string
+          message_id: string
+          message_index: number
+          role: string
+          session_id: string
+          timestamp: string
+          title: string | null
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          message_id: string
+          message_index: number
+          role: string
+          session_id: string
+          timestamp?: string
+          title?: string | null
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          message_id?: string
+          message_index?: number
+          role?: string
+          session_id?: string
+          timestamp?: string
+          title?: string | null
+        }
+        Relationships: []
+      }
       patterns: {
         Row: {
           breakout_time: string | null

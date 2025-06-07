@@ -1,15 +1,14 @@
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Calendar, Filter } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 
 interface TimeFilterProps {
-  onTimeRangeChange: (range: string) => void;
+  value: string;
+  onChange: (range: string) => void;
 }
 
-const TimeFilter: React.FC<TimeFilterProps> = ({ onTimeRangeChange }) => {
-  const [activeFilter, setActiveFilter] = useState('all');
-
+const TimeFilter: React.FC<TimeFilterProps> = ({ value, onChange }) => {
   const timeRanges = [
     { key: 'all', label: 'All Time' },
     { key: 'week', label: 'This Week' },
@@ -19,22 +18,21 @@ const TimeFilter: React.FC<TimeFilterProps> = ({ onTimeRangeChange }) => {
   ];
 
   const handleFilterChange = (range: string) => {
-    setActiveFilter(range);
-    onTimeRangeChange(range);
+    onChange(range);
   };
 
   return (
-    <div className="flex items-center gap-2 mb-4">
+    <div className="flex items-center gap-2">
       <Calendar className="w-4 h-4 text-slate-400" />
       <span className="text-sm text-slate-400">Time Range:</span>
       {timeRanges.map((range) => (
         <Button
           key={range.key}
-          variant={activeFilter === range.key ? "default" : "ghost"}
+          variant={value === range.key ? "default" : "ghost"}
           size="sm"
           onClick={() => handleFilterChange(range.key)}
           className={`h-7 px-2 text-xs ${
-            activeFilter === range.key 
+            value === range.key 
               ? 'bg-blue-600 text-white' 
               : 'text-slate-400 hover:text-white hover:bg-slate-700'
           }`}

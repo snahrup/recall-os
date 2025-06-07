@@ -7,6 +7,9 @@ import NodeHoverCard from '@/components/NodeHoverCard';
 import GraphActions from '@/components/GraphActions';
 import TimeFilter from '@/components/TimeFilter';
 import Layout from '@/components/Layout';
+import { useChatHistory, useChatSessions } from '@/hooks/useChatHistory';
+import { Button } from '@/components/ui/button';
+import { RefreshCw, MessageSquare } from 'lucide-react';
 import '@xyflow/react/dist/style.css';
 
 const nodeTypes = {
@@ -16,6 +19,9 @@ const nodeTypes = {
 type CustomNode = Node<CustomNodeData>;
 
 const Dashboard = () => {
+  const { data: chatHistory, isLoading: chatLoading, refetch: refetchChat } = useChatHistory();
+  const { data: chatSessions, isLoading: sessionsLoading } = useChatSessions();
+
   const [nodes, setNodes] = useState<CustomNode[]>([
     {
       id: '1',
@@ -106,7 +112,7 @@ const Dashboard = () => {
     console.log('Edges changed:', changes);
   };
 
-  const handleNodeClick = (event: React.MouseEvent, node: CustomNode) => {
+  const handleNodeClick = (event: React.MouseEvent, node: Node) => {
     setSelectedNodes(prev => 
       prev.includes(node.id) 
         ? prev.filter(id => id !== node.id)
@@ -114,11 +120,55 @@ const Dashboard = () => {
     );
   };
 
+  const generateNodesFromChatHistory = () => {
+    if (!chatSessions || chatSessions.length === 0) return;
+
+    const chatNodes: CustomNode[] = chatSessions.map((session, index) => ({
+      id: `chat-${session.session_id}`,
+      type: 'custom',
+      position: { x: 600 + (index % 3) * 150, y: 50 + Math.floor(index / 3) * 100 },
+      data: {
+        label: session.title || `Chat ${session.session_id.slice(0, 8)}`,
+        type: 'conversation' as const,
+        snippet: `${session.message_count} messages`,
+        timestamp: session.last_message_at,
+        tags: ['Chat', 'History'],
+        conversationCount: session.message_count
+      }
+    }));
+
+    setNodes(prev => [...prev.filter(node => !node.id.startsWith('chat-')), ...chatNodes]);
+  };
+
   return (
     <Layout>
       <div className="h-full relative">
         <div className="absolute top-4 left-4 right-4 z-10 flex justify-between items-center">
-          <TimeFilter value={timeFilter} onChange={setTimeFilter} />
+          <div className="flex items-center gap-4">
+            <TimeFilter value={timeFilter} onChange={setTimeFilter} />
+            <div className="flex items-center gap-2">
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => refetchChat()}
+                disabled={chatLoading}
+                className="border-slate-600 text-slate-300 hover:bg-slate-700"
+              >
+                <RefreshCw className={`w-4 h-4 mr-2 ${chatLoading ? 'animate-spin' : ''}`} />
+                Refresh Chat
+              </Button>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={generateNodesFromChatHistory}
+                disabled={sessionsLoading || !chatSessions}
+                className="border-slate-600 text-slate-300 hover:bg-slate-700"
+              >
+                <MessageSquare className="w-4 h-4 mr-2" />
+                Load Chat History ({chatSessions?.length || 0})
+              </Button>
+            </div>
+          </div>
           <GraphActions 
             selectedNodes={selectedNodes}
             onClearSelection={() => setSelectedNodes([])}
@@ -138,6 +188,12 @@ const Dashboard = () => {
           <Background color="#374151" />
           <Controls className="bg-slate-800 border-slate-600" />
         </ReactFlow>
+
+        {chatLoading && (
+          <div className="absolute bottom-4 left-4 bg-slate-800 border border-slate-600 rounded px-3 py-2 text-slate-300 text-sm">
+            Loading chat history...
+          </div>
+        )}
       </div>
     </Layout>
   );
