@@ -1,10 +1,12 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Brain, TrendingUp, MessageSquare, Upload, Search, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import ImageDisplay from '@/components/ImageDisplay';
+import Layout from '@/components/Layout';
 
 const Home = () => {
   const memoryStats = [
@@ -45,7 +47,8 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white p-6">
+    <Layout>
+      <div className="min-h-screen bg-slate-900 text-white p-6">
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-2">Your Memory Command Center</h1>
@@ -109,11 +112,21 @@ const Home = () => {
                         <span className="text-slate-400 text-xs">{snapshot.conversations} conversations</span>
                       </div>
                       <div className="mt-3 flex gap-2">
-                        <Button size="sm" variant="ghost" className="text-blue-400 hover:text-blue-300">
-                          View Graph
+                        <Button
+                          asChild
+                          size="sm"
+                          variant="ghost"
+                          className="text-blue-400 hover:text-blue-300"
+                        >
+                          <Link to="/graph">View Graph</Link>
                         </Button>
-                        <Button size="sm" variant="ghost" className="text-slate-400 hover:text-slate-300">
-                          Review
+                        <Button
+                          asChild
+                          size="sm"
+                          variant="ghost"
+                          className="text-slate-400 hover:text-slate-300"
+                        >
+                          <Link to="/review">Review</Link>
                         </Button>
                       </div>
                     </div>
@@ -136,10 +149,15 @@ const Home = () => {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Button className="h-20 bg-blue-600 hover:bg-blue-700 flex flex-col items-center justify-center">
-                  <MessageSquare className="w-6 h-6 mb-2" />
-                  Import Conversations
-                  <span className="text-xs opacity-75">OpenAI JSON format</span>
+                <Button
+                  asChild
+                  className="h-20 bg-blue-600 hover:bg-blue-700 flex flex-col items-center justify-center"
+                >
+                  <Link to="/import" className="flex flex-col items-center">
+                    <MessageSquare className="w-6 h-6 mb-2" />
+                    Import Conversations
+                    <span className="text-xs opacity-75">OpenAI JSON format</span>
+                  </Link>
                 </Button>
                 <div className="h-20 border-2 border-dashed border-slate-600 rounded-lg flex flex-col items-center justify-center text-slate-400 hover:border-slate-500 transition-colors cursor-pointer">
                   <Upload className="w-6 h-6 mb-2" />
@@ -209,7 +227,7 @@ const Home = () => {
           </Card>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

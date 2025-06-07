@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
+import Layout from '@/components/Layout';
 
 const Settings = () => {
   const [vectorDB, setVectorDB] = useState('supabase');
@@ -24,7 +25,8 @@ const Settings = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white p-6">
+    <Layout>
+      <div className="min-h-screen bg-slate-900 text-white p-6">
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-2">Settings</h1>
@@ -298,7 +300,7 @@ const Settings = () => {
           </CardContent>
         </Card>
       </div>
-    </div>
+    </Layout>
   );
 };
 
