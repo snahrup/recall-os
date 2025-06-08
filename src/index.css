@@ -1,4 +1,5 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,44 +8,44 @@
 
 @layer base {
   :root {
-    --background: 15 23 42;
-    --foreground: 248 250 252;
+    --background: 0 2 18;
+    --foreground: 240 240 242;
 
-    --card: 30 41 59;
-    --card-foreground: 248 250 252;
+    --card: 28 29 32;
+    --card-foreground: 240 240 242;
 
-    --popover: 30 41 59;
-    --popover-foreground: 248 250 252;
+    --popover: 28 29 32;
+    --popover-foreground: 240 240 242;
 
-    --primary: 37 99 235;
-    --primary-foreground: 248 250 252;
+    --primary: 94 106 210;
+    --primary-foreground: 255 255 255;
 
-    --secondary: 51 65 85;
-    --secondary-foreground: 248 250 252;
+    --secondary: 35 35 38;
+    --secondary-foreground: 240 240 242;
 
-    --muted: 51 65 85;
-    --muted-foreground: 148 163 184;
+    --muted: 40 40 44;
+    --muted-foreground: 160 160 168;
 
-    --accent: 51 65 85;
-    --accent-foreground: 248 250 252;
+    --accent: 62 62 68;
+    --accent-foreground: 240 240 242;
 
-    --destructive: 239 68 68;
-    --destructive-foreground: 248 250 252;
+    --destructive: 229 72 77;
+    --destructive-foreground: 240 240 242;
 
-    --border: 71 85 105;
-    --input: 71 85 105;
-    --ring: 37 99 235;
+    --border: 54 56 63;
+    --input: 54 56 63;
+    --ring: 94 106 210;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 30 41 59;
-    --sidebar-foreground: 148 163 184;
-    --sidebar-primary: 37 99 235;
-    --sidebar-primary-foreground: 248 250 252;
-    --sidebar-accent: 51 65 85;
-    --sidebar-accent-foreground: 248 250 252;
-    --sidebar-border: 71 85 105;
-    --sidebar-ring: 37 99 235;
+    --sidebar-background: 28 29 32;
+    --sidebar-foreground: 160 160 168;
+    --sidebar-primary: 94 106 210;
+    --sidebar-primary-foreground: 255 255 255;
+    --sidebar-accent: 62 62 68;
+    --sidebar-accent-foreground: 240 240 242;
+    --sidebar-border: 54 56 63;
+    --sidebar-ring: 94 106 210;
   }
 }
 
@@ -55,6 +56,7 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
   }
 }
 
@@ -87,4 +89,23 @@
 
 .react-flow__minimap {
   background: #1e293b;
+}
+
+@layer base {
+  .bg-slate-900 { background-color: #000212 !important; }
+  .bg-slate-800 { background-color: #1c1c1f !important; }
+  .bg-slate-700 { background-color: #232326 !important; }
+  .bg-slate-600 { background-color: #28282c !important; }
+  .bg-slate-500 { background-color: #3e3e44 !important; }
+  .bg-slate-400 { background-color: #62666d !important; }
+  .text-slate-300 { color: #9b9b9c !important; }
+  .text-slate-400 { color: #a1a1aa !important; }
+  .border-slate-700 { border-color: #232326 !important; }
+  .border-slate-600 { border-color: #28282c !important; }
+  .border-slate-500 { border-color: #3e3e44 !important; }
+  .border-slate-400 { border-color: #62666d !important; }
+  .bg-blue-600 { background-color: #5e6ad2 !important; }
+  .bg-blue-700 { background-color: #505cdf !important; }
+  .text-blue-400 { color: #7b89ff !important; }
+  .text-blue-100 { color: #e4e7ff !important; }
 }

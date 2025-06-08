@@ -116,7 +116,7 @@ const Home = () => {
                           asChild
                           size="sm"
                           variant="ghost"
-                          className="text-blue-400 hover:text-blue-300"
+                          className="text-blue-400 hover:text-blue-300 transition-colors duration-200"
                         >
                           <Link to="/graph">View Graph</Link>
                         </Button>
@@ -124,7 +124,7 @@ const Home = () => {
                           asChild
                           size="sm"
                           variant="ghost"
-                          className="text-slate-400 hover:text-slate-300"
+                          className="text-slate-400 hover:text-slate-300 transition-colors duration-200"
                         >
                           <Link to="/review">Review</Link>
                         </Button>
@@ -151,7 +151,7 @@ const Home = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Button
                   asChild
-                  className="h-20 bg-blue-600 hover:bg-blue-700 flex flex-col items-center justify-center"
+                  className="h-20 bg-blue-600 hover:bg-blue-700 flex flex-col items-center justify-center transition-colors duration-200"
                 >
                   <Link to="/import" className="flex flex-col items-center">
                     <MessageSquare className="w-6 h-6 mb-2" />
