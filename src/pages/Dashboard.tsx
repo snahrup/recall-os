@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ReactFlow, Node, Edge, Background, Controls, type NodeChange, type EdgeChange } from '@xyflow/react';
 import { CustomNodeData } from '@/components/CustomNode';
 import CustomNode from '@/components/CustomNode';
@@ -82,29 +82,31 @@ const Dashboard = () => {
     }
   ]);
 
-  const [edges, setEdges] = useState<Edge[]>([
-    {
-      id: 'e1-2',
-      source: '1',
-      target: '2',
-      type: 'smoothstep',
-      style: { stroke: '#64748b' }
-    },
-    {
-      id: 'e1-3',
-      source: '1',
-      target: '3',
-      type: 'smoothstep',
-      style: { stroke: '#64748b' }
-    },
-    {
-      id: 'e1-4',
-      source: '1',
-      target: '4',
-      type: 'smoothstep',
-      style: { stroke: '#64748b' }
+  const generateEdgesFromTags = (list: CustomNode[]): Edge[] => {
+    const autoEdges: Edge[] = [];
+    for (let i = 0; i < list.length; i++) {
+      for (let j = i + 1; j < list.length; j++) {
+        const tagsA = list[i].data.tags || [];
+        const tagsB = list[j].data.tags || [];
+        if (tagsA.some(tag => tagsB.includes(tag))) {
+          autoEdges.push({
+            id: `e-${list[i].id}-${list[j].id}`,
+            source: list[i].id,
+            target: list[j].id,
+            type: 'smoothstep',
+            style: { stroke: '#64748b' }
+          });
+        }
+      }
     }
-  ]);
+    return autoEdges;
+  };
+
+  const [edges, setEdges] = useState<Edge[]>(generateEdgesFromTags(nodes));
+
+  useEffect(() => {
+    setEdges(generateEdgesFromTags(nodes));
+  }, [nodes]);
 
   const [selectedNodes, setSelectedNodes] = useState<string[]>([]);
   const [timeFilter, setTimeFilter] = useState('all');
