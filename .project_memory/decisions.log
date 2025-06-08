@@ -6,3 +6,15 @@
 - Added Home, Review, and Settings pages (commit 21c1103).
 - Introduced a microservice for long‑term memory and SQL migrations (commit 782609b).
 - Added image support for nodes and memory items (commit aabd5d4).
+- Fixed ImageDisplay bug with proper click handling (PR #1, commit 93299d2).
+- Corrected breadcrumb ellipsis display name (PR #2, commit 4c0703d).
+- Exposed ImageDisplay `onClick` prop (PR #3, commit 73f14c0).
+- Removed placeholder comment from the home page (PR #4, commit 65d4cb6).
+- Established project memory baseline (PR #5, commit c0e393f).
+- Added Vitest setup and initial test (PR #6, commit 4bcc88b).
+- Fixed buttons and links across pages, added import script (PR #7, commit 74393e4).
+- Resolved ESLint issues across the codebase (PR #8, commit 74d2112).
+- Created Chat page with memory search integration (PR #9, commit 9e51e05).
+- Made sidebar collapsible (PR #10, commit 73791c0).
+- Enhanced graph nodes and auto-connect (PR #11, commit 4be632d).
+- Rebuilt UI with Next.js inspired by Linear.app (PR #12, commit d9931c3).

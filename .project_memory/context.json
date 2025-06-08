@@ -1,11 +1,18 @@
 {
   "project": "Recall OS",
-  "tech_stack": ["React", "Vite", "TypeScript", "Tailwind", "shadcn-ui"],
+  "tech_stack": ["Next.js", "React", "TypeScript", "Tailwind", "shadcn-ui"],
   "backend": "Supabase",
-  "pages": ["Home", "Dashboard(Graph)", "Review", "Settings"],
-  "key_components": ["CustomNode", "GraphActions", "ImageDisplay", "Layout"],
+  "pages": ["Graph", "Memories", "Query", "Import"],
+  "key_components": [
+    "CustomNode",
+    "GraphActions",
+    "ImageDisplay",
+    "Layout",
+    "Sidebar",
+    "Topbar"
+  ],
   "data_hooks": ["useChatHistory"],
   "supabase_url": "https://wgmjhfxqcaefsfqdvkib.supabase.co",
   "schema_tables": ["candles", "chat_history", "patterns"],
-  "last_commit": "Implement image display features"
+  "last_commit": "Rebuilt UI with Next.js"
 }
