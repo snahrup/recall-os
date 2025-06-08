@@ -9,10 +9,11 @@
     "ImageDisplay",
     "Layout",
     "Sidebar",
-    "Topbar"
+    "Topbar",
+    "GmailOAuth"
   ],
   "data_hooks": ["useChatHistory"],
   "supabase_url": "https://wgmjhfxqcaefsfqdvkib.supabase.co",
   "schema_tables": ["candles", "chat_history", "patterns"],
-  "last_commit": "Rebuilt UI with Next.js"
+  "last_commit": "Add Gmail OAuth2 integration"
 }

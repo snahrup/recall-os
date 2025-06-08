@@ -23,3 +23,18 @@ npm run dev
 - `npm run lint` – run ESLint
 
 This project is a work in progress and uses placeholder API calls expecting endpoints like `/memories` and `/query`.
+
+## Gmail Integration
+
+To enable Gmail and contacts import, create a Google Cloud project and OAuth2 client credentials. Provide the following environment variables when running the dev server or add them to a `.env.local` file:
+
+```bash
+export GOOGLE_CLIENT_ID=your_client_id
+export GOOGLE_CLIENT_SECRET=your_client_secret
+export GOOGLE_REDIRECT_URI=http://localhost:3000/api/gmail/callback
+```
+
+Visit `/api/gmail/auth` to start the OAuth flow. After authorizing, tokens returned by
+`/api/gmail/callback` can be sent in the body of `/api/gmail/messages` or
+`/api/gmail/contacts` POST requests to retrieve data.
+

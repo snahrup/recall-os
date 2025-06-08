@@ -16,7 +16,7 @@
 - `app/` – Next.js App Router pages
 - `src/pages` – legacy pages from the earlier Vite setup
 - `src/hooks` – custom hooks (e.g., `useChatHistory`)
-- `src/integrations` – external services (Supabase)
+- `src/integrations` – external services (Supabase, Gmail OAuth helpers)
 - `public/` – static assets
 
 Build scripts and configuration live in `vite.config.ts`, `tailwind.config.ts`, and `tsconfig*.json`.
