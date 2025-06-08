@@ -1,7 +1,7 @@
 
 import React, { memo } from 'react';
 import { Handle, Position, NodeProps } from '@xyflow/react';
-import { MessageSquare, Brain, Bot, Bookmark, Image } from 'lucide-react';
+import { MessageSquare, Brain, Bot, Bookmark } from 'lucide-react';
 import NodeHoverCard from './NodeHoverCard';
 
 export interface CustomNodeData {
@@ -48,7 +48,7 @@ const CustomNode: React.FC<NodeProps<CustomNodeData>> = ({ id, data }) => {
     }
   };
 
-  const hasImages = data.imageUrl || (data.images && data.images.length > 0);
+  const thumbnail = data.imageUrl || (data.images && data.images[0]);
 
   return (
     <NodeHoverCard 
@@ -71,11 +71,16 @@ const CustomNode: React.FC<NodeProps<CustomNodeData>> = ({ id, data }) => {
           className="w-2 h-2 bg-slate-500 border-slate-400"
         />
         <div className="flex items-center gap-2">
-          {getNodeIcon(data.type)}
-          <span className="max-w-24 truncate">{data.label}</span>
-          {hasImages && (
-            <Image className="w-2 h-2 text-slate-400" />
+          {thumbnail ? (
+            <img
+              src={thumbnail}
+              alt=""
+              className="w-4 h-4 object-cover rounded"
+            />
+          ) : (
+            getNodeIcon(data.type)
           )}
+          <span className="max-w-24 truncate">{data.label}</span>
         </div>
         <Handle
           type="source"

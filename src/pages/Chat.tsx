@@ -67,8 +67,9 @@ const Chat: React.FC = () => {
         content: json.choices[0].message.content,
       };
       setMessages(prev => [...prev, assistantMessage]);
-    } catch (err: any) {
-      toast({ title: 'Error', description: err.message });
+    } catch (err) {
+      const error = err as Error;
+      toast({ title: 'Error', description: error.message });
     } finally {
       setThinking(false);
     }
