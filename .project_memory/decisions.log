@@ -18,3 +18,4 @@
 - Made sidebar collapsible (PR #10, commit 73791c0).
 - Enhanced graph nodes and auto-connect (PR #11, commit 4be632d).
 - Rebuilt UI with Next.js inspired by Linear.app (PR #12, commit d9931c3).
+- Added Gmail OAuth2 integration for importing messages and contacts (PR #13, commit cdf2538).
