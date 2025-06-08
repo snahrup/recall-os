@@ -82,7 +82,7 @@ const Chat: React.FC = () => {
           {messages.map((m, i) => (
             <div
               key={i}
-              className={`p-2 rounded ${m.role === 'user' ? 'bg-blue-600 text-white self-end' : 'bg-slate-700 text-slate-100'} max-w-lg`}
+              className={`p-2 rounded ${m.role === 'user' ? 'bg-blue-600 text-white self-end' : 'bg-slate-700 text-slate-100'} max-w-lg transition-colors duration-200`}
             >
               {m.content}
             </div>

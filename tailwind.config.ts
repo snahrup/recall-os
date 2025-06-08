@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import animatePlugin from "tailwindcss-animate";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 export default {
 	darkMode: ["class"],
@@ -18,8 +19,11 @@ export default {
 				'2xl': '1400px'
 			}
 		},
-		extend: {
-			colors: {
+               extend: {
+                        fontFamily: {
+                                sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
+                       },
+                        colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
@@ -53,17 +57,31 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
-			},
+                               sidebar: {
+                                       DEFAULT: 'hsl(var(--sidebar-background))',
+                                       foreground: 'hsl(var(--sidebar-foreground))',
+                                       primary: 'hsl(var(--sidebar-primary))',
+                                       'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+                                       accent: 'hsl(var(--sidebar-accent))',
+                                       'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+                                       border: 'hsl(var(--sidebar-border))',
+                                       ring: 'hsl(var(--sidebar-ring))'
+                                },
+                                blue: {
+                                        100: '#e4e7ff',
+                                        400: '#7b89ff',
+                                        600: '#5e6ad2',
+                                        700: '#505cdf'
+                                },
+                                slate: {
+                                        400: '#62666d',
+                                        500: '#3e3e44',
+                                        600: '#28282c',
+                                        700: '#232326',
+                                        800: '#1c1c1f',
+                                        900: '#000212'
+                                }
+                       },
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',

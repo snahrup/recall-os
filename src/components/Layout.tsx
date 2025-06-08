@@ -69,7 +69,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               <Search className="w-4 h-4 absolute left-3 top-3 text-slate-400" />
               <Input
                 placeholder="Search memories..."
-                className="pl-10 bg-slate-700 border-slate-600 text-white placeholder-slate-400"
+                className="pl-10 bg-slate-700 border-slate-600 text-white placeholder-slate-400 focus:ring-blue-600"
               />
             </div>
           )}
@@ -84,7 +84,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   className={`w-full ${collapsed ? 'justify-center' : 'justify-start'} ${
                     isActive(item.href)
                       ? 'bg-slate-700 text-white'
-                      : 'text-slate-300 hover:text-white hover:bg-slate-700'
+                      : 'text-slate-300 hover:text-white hover:bg-slate-700 transition-colors duration-200'
                   }`}
                 >
                   <item.icon className="w-4 h-4" />
@@ -117,7 +117,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
         <div className="p-4 border-t border-slate-700">
           <Link to="/import">
-            <Button className="w-full bg-blue-600 hover:bg-blue-700 justify-center">
+            <Button className="w-full bg-blue-600 hover:bg-blue-700 justify-center transition-colors duration-200">
               <Upload className="w-4 h-4" />
               {!collapsed && <span className="ml-2">Import Conversations</span>}
             </Button>
