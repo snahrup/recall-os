@@ -2,7 +2,7 @@
   "project": "Recall OS",
   "tech_stack": ["Next.js", "React", "TypeScript", "Tailwind", "shadcn-ui"],
   "backend": "Supabase",
-  "pages": ["Graph", "Memories", "Query", "Import"],
+  "pages": ["Graph", "Memories", "Query", "Import", "Chat"],
   "key_components": [
     "CustomNode",
     "GraphActions",
@@ -10,10 +10,11 @@
     "Layout",
     "Sidebar",
     "Topbar",
-    "GmailOAuth"
+    "GmailOAuth",
+    "OpenAI"
   ],
   "data_hooks": ["useChatHistory"],
   "supabase_url": "https://wgmjhfxqcaefsfqdvkib.supabase.co",
   "schema_tables": ["candles", "chat_history", "patterns"],
-  "last_commit": "Add Gmail OAuth2 integration"
+  "last_commit": "Add OpenAI chat integration"
 }

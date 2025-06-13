@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
+import { createChatCompletion, type ChatCompletionMessage } from '@/integrations/openai/api';
 import type { ChatMessage } from '@/types/chat';
 
 interface Message {
@@ -36,7 +37,7 @@ const Chat: React.FC = () => {
 
       setMemorySnippets(memories || []);
 
-      const openaiMessages = [
+      const openaiMessages: ChatCompletionMessage[] = [
         ...messages,
         userMessage,
         {
@@ -45,26 +46,10 @@ const Chat: React.FC = () => {
         },
       ].map(m => ({ role: m.role, content: m.content }));
 
-      const res = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
-        },
-        body: JSON.stringify({
-          model: 'gpt-3.5-turbo',
-          messages: openaiMessages,
-        }),
-      });
-
-      if (!res.ok) {
-        throw new Error('Failed to fetch from OpenAI');
-      }
-
-      const json = await res.json();
+      const response = await createChatCompletion(openaiMessages);
       const assistantMessage: Message = {
         role: 'assistant',
-        content: json.choices[0].message.content,
+        content: response,
       };
       setMessages(prev => [...prev, assistantMessage]);
     } catch (err) {
