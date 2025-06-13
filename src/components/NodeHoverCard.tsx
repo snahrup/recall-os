@@ -27,9 +27,9 @@ const NodeHoverCard: React.FC<NodeHoverCardProps> = ({ nodeData, children }) => 
   const getNodeIcon = (type: string) => {
     switch (type) {
       case 'topic':
-        return <div className="w-3 h-3 bg-blue-400 rounded-full" />;
+        return <div className="w-3 h-3 bg-gray-400 rounded-full" />;
       case 'tool':
-        return <div className="w-3 h-3 bg-purple-400 rounded-full" />;
+        return <div className="w-3 h-3 bg-gray-400 rounded-full" />;
       case 'conversation':
         return <MessageSquare className="w-3 h-3 text-green-400" />;
       case 'bookmark':
@@ -101,7 +101,7 @@ const NodeHoverCard: React.FC<NodeHoverCardProps> = ({ nodeData, children }) => 
               <div className="flex items-center gap-1 flex-wrap">
                 <Tag className="w-3 h-3" />
                 {nodeData.tags.map((tag, index) => (
-                  <span key={index} className="bg-blue-600 px-1 py-0.5 rounded text-xs">
+                  <span key={index} className="bg-gray-600 text-gray-100 px-1 py-0.5 rounded text-xs">
                     {tag}
                   </span>
                 ))}

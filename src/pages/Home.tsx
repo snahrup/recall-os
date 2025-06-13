@@ -65,7 +65,7 @@ const Home = () => {
                   <p className="text-slate-400 text-sm">{stat.label}</p>
                   <p className="text-2xl font-bold text-white">{stat.value}</p>
                 </div>
-                <stat.icon className="w-8 h-8 text-blue-400" />
+                <stat.icon className="w-8 h-8 text-gray-400" />
               </div>
             </CardContent>
           </Card>
@@ -78,7 +78,7 @@ const Home = () => {
           <Card className="bg-slate-800 border-slate-700">
             <CardHeader>
               <CardTitle className="text-white flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-blue-400" />
+                <Sparkles className="w-5 h-5 text-gray-400" />
                 Memory Snapshots
               </CardTitle>
               <CardDescription className="text-slate-400">
@@ -104,7 +104,7 @@ const Home = () => {
                       <div className="flex items-center justify-between">
                         <div className="flex gap-2">
                           {snapshot.tags.map((tag, tagIndex) => (
-                            <span key={tagIndex} className="px-2 py-1 bg-blue-600 text-blue-100 text-xs rounded">
+                            <span key={tagIndex} className="px-2 py-1 bg-gray-600 text-gray-100 text-xs rounded">
                               {tag}
                             </span>
                           ))}
@@ -116,7 +116,7 @@ const Home = () => {
                           asChild
                           size="sm"
                           variant="ghost"
-                          className="text-blue-400 hover:text-blue-300"
+                          className="text-gray-400 hover:text-gray-300"
                         >
                           <Link to="/graph">View Graph</Link>
                         </Button>
@@ -151,7 +151,7 @@ const Home = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Button
                   asChild
-                  className="h-20 bg-blue-600 hover:bg-blue-700 flex flex-col items-center justify-center"
+                  className="h-20 bg-gray-600 hover:bg-gray-700 flex flex-col items-center justify-center"
                 >
                   <Link to="/import" className="flex flex-col items-center">
                     <MessageSquare className="w-6 h-6 mb-2" />

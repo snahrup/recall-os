@@ -51,7 +51,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="p-4 border-b border-slate-700">
           <div className="flex items-center justify-between mb-4">
             <Link to="/" className="flex items-center gap-2">
-              <Brain className="w-6 h-6 text-blue-400" />
+              <Brain className="w-6 h-6 text-gray-400" />
               {!collapsed && (
                 <h1 className="text-lg font-semibold text-white">Recall OS</h1>
               )}
@@ -103,11 +103,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   AI Agent Conversations
                 </div>
                 <div className="text-sm text-slate-300 flex items-center gap-2">
-                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
                   Memory Graph Updates
                 </div>
                 <div className="text-sm text-slate-300 flex items-center gap-2">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
                   New Tool Integrations
                 </div>
               </div>
@@ -117,7 +117,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
         <div className="p-4 border-t border-slate-700">
           <Link to="/import">
-            <Button className="w-full bg-blue-600 hover:bg-blue-700 justify-center">
+            <Button className="w-full bg-gray-600 hover:bg-gray-700 justify-center">
               <Upload className="w-4 h-4" />
               {!collapsed && <span className="ml-2">Import Conversations</span>}
             </Button>
