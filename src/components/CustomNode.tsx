@@ -20,15 +20,15 @@ const CustomNode: React.FC<NodeProps<CustomNodeData>> = ({ id, data }) => {
   const getNodeIcon = (type: string) => {
     switch (type) {
       case 'topic':
-        return <div className="w-2 h-2 bg-blue-400 rounded-full" />;
+        return <div className="w-2 h-2 bg-gray-400 rounded-full" />;
       case 'tool':
-        return <Bot className="w-3 h-3 text-purple-400" />;
+        return <Bot className="w-3 h-3 text-gray-400" />;
       case 'conversation':
         return <MessageSquare className="w-3 h-3 text-green-400" />;
       case 'bookmark':
         return <Bookmark className="w-3 h-3 text-pink-400" />;
       default:
-        return <Brain className="w-3 h-3 text-blue-400" />;
+        return <Brain className="w-3 h-3 text-gray-400" />;
     }
   };
 
@@ -36,9 +36,9 @@ const CustomNode: React.FC<NodeProps<CustomNodeData>> = ({ id, data }) => {
     const baseStyles = "px-3 py-2 rounded-lg border text-xs font-medium transition-all duration-200 hover:scale-105 cursor-pointer";
     switch (type) {
       case 'topic':
-        return `${baseStyles} bg-blue-900/50 border-blue-500/50 text-blue-200`;
+        return `${baseStyles} bg-gray-900/50 border-gray-500/50 text-gray-200`;
       case 'tool':
-        return `${baseStyles} bg-purple-900/50 border-purple-500/50 text-purple-200`;
+        return `${baseStyles} bg-gray-900/50 border-gray-500/50 text-gray-200`;
       case 'conversation':
         return `${baseStyles} bg-green-900/50 border-green-500/50 text-green-200`;
       case 'bookmark':

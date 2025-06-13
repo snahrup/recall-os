@@ -43,7 +43,7 @@ const GraphActions: React.FC<GraphActionsProps> = ({ selectedNodes, onAction }) 
   return (
     <div className="bg-slate-800 border border-slate-600 rounded-lg p-4 space-y-4">
       <div className="flex items-center gap-2">
-        <Brain className="w-4 h-4 text-blue-400" />
+        <Brain className="w-4 h-4 text-gray-400" />
         <h3 className="text-sm font-medium text-white">Graph Actions</h3>
       </div>
 
@@ -84,7 +84,7 @@ const GraphActions: React.FC<GraphActionsProps> = ({ selectedNodes, onAction }) 
             onClick={handleCustomQuery}
             disabled={!customQuery.trim()}
             size="sm"
-            className="bg-blue-600 hover:bg-blue-700"
+            className="bg-gray-600 hover:bg-gray-700"
           >
             <Search className="w-4 h-4" />
           </Button>

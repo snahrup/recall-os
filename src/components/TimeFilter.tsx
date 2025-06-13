@@ -32,8 +32,8 @@ const TimeFilter: React.FC<TimeFilterProps> = ({ value, onChange }) => {
           size="sm"
           onClick={() => handleFilterChange(range.key)}
           className={`h-7 px-2 text-xs ${
-            value === range.key 
-              ? 'bg-blue-600 text-white' 
+            value === range.key
+              ? 'bg-gray-600 text-white'
               : 'text-slate-400 hover:text-white hover:bg-slate-700'
           }`}
         >

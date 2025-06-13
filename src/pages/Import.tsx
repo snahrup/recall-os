@@ -64,7 +64,7 @@ const Import = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Button
                 onClick={() => fileInputRef.current?.click()}
-                className="h-20 bg-blue-600 hover:bg-blue-700 flex flex-col items-center justify-center"
+                className="h-20 bg-gray-600 hover:bg-gray-700 flex flex-col items-center justify-center"
                 disabled={uploading}
               >
                 <MessageSquare className="w-6 h-6 mb-2" />

@@ -149,7 +149,7 @@ const Review = () => {
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <memory.sourceIcon className="w-5 h-5 text-blue-400" />
+                    <memory.sourceIcon className="w-5 h-5 text-gray-400" />
                     <div>
                       <CardTitle className="text-white text-lg">{memory.title}</CardTitle>
                       <CardDescription className="text-slate-400">
@@ -175,7 +175,7 @@ const Review = () => {
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {memory.tags.map((tag, index) => (
-                    <span key={index} className="px-2 py-1 bg-blue-600 text-blue-100 text-xs rounded">
+                    <span key={index} className="px-2 py-1 bg-gray-600 text-gray-100 text-xs rounded">
                       {tag}
                     </span>
                   ))}
@@ -252,7 +252,7 @@ const Review = () => {
                 <div key={index} className="p-3 bg-slate-700 rounded border border-slate-600">
                   <p className="text-slate-300 text-sm mb-2">{suggestion}</p>
                   <div className="flex gap-2">
-                    <Button size="sm" variant="ghost" className="text-blue-400 hover:text-blue-300 text-xs">
+                    <Button size="sm" variant="ghost" className="text-gray-400 hover:text-gray-300 text-xs">
                       Review
                     </Button>
                     <Button size="sm" variant="ghost" className="text-slate-400 hover:text-slate-300 text-xs">

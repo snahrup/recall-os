@@ -38,7 +38,7 @@ const Settings = () => {
         <Card className="bg-slate-800 border-slate-700">
           <CardHeader>
             <CardTitle className="text-white flex items-center gap-2">
-              <Database className="w-5 h-5 text-blue-400" />
+              <Database className="w-5 h-5 text-gray-400" />
               Data Sources & Imports
             </CardTitle>
             <CardDescription className="text-slate-400">
@@ -108,7 +108,7 @@ const Settings = () => {
         <Card className="bg-slate-800 border-slate-700">
           <CardHeader>
             <CardTitle className="text-white flex items-center gap-2">
-              <Brain className="w-5 h-5 text-purple-400" />
+              <Brain className="w-5 h-5 text-gray-400" />
               Memory Engine
             </CardTitle>
             <CardDescription className="text-slate-400">
