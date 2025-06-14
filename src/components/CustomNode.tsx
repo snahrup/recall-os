@@ -13,7 +13,6 @@ export interface CustomNodeData {
   conversationCount?: number;
   imageUrl?: string;
   images?: string[];
-  [key: string]: unknown; // Add index signature for React Flow compatibility
 }
 
 const CustomNode: React.FC<NodeProps<CustomNodeData>> = ({ id, data }) => {
@@ -48,7 +47,7 @@ const CustomNode: React.FC<NodeProps<CustomNodeData>> = ({ id, data }) => {
     }
   };
 
-  const thumbnail = data.imageUrl || (data.images && data.images.length > 0 && data.images[0]);
+  const thumbnail = data.imageUrl || (data.images && data.images.length > 0 ? data.images[0] : undefined);
 
   return (
     <NodeHoverCard 

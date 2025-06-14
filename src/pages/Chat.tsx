@@ -44,7 +44,7 @@ const Chat: React.FC = () => {
           role: 'system',
           content: `Use the following memories to inform your answer:\n${memories?.map(m => `- ${m.content}`).join('\n') || ''}`,
         },
-      ].map(m => ({ role: m.role, content: m.content }));
+      ];
 
       const response = await createChatCompletion(openaiMessages);
       const assistantMessage: Message = {
