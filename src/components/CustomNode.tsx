@@ -48,7 +48,7 @@ const CustomNode: React.FC<NodeProps<CustomNodeData>> = ({ id, data }) => {
     }
   };
 
-  const thumbnail = data.imageUrl || (data.images && data.images[0]);
+  const thumbnail = data.imageUrl || (data.images && data.images.length > 0 && data.images[0]);
 
   return (
     <NodeHoverCard 
@@ -74,7 +74,7 @@ const CustomNode: React.FC<NodeProps<CustomNodeData>> = ({ id, data }) => {
           {thumbnail ? (
             <img
               src={thumbnail}
-              alt=""
+              alt={data.label}
               className="w-4 h-4 object-cover rounded"
             />
           ) : (

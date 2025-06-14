@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ReactFlow, Node, Edge, Background, Controls, type NodeChange, type EdgeChange } from '@xyflow/react';
 import { CustomNodeData } from '@/components/CustomNode';
@@ -15,13 +14,13 @@ const nodeTypes = {
   custom: CustomNode,
 };
 
-type CustomNode = Node<CustomNodeData>;
+type CustomNodeType = Node<CustomNodeData>;
 
 const Dashboard = () => {
   const { data: chatHistory, isLoading: chatLoading, refetch: refetchChat } = useChatHistory();
   const { data: chatSessions, isLoading: sessionsLoading } = useChatSessions();
 
-  const [nodes, setNodes] = useState<CustomNode[]>([
+  const [nodes, setNodes] = useState<CustomNodeType[]>([
     {
       id: '1',
       type: 'custom',
@@ -82,7 +81,7 @@ const Dashboard = () => {
     }
   ]);
 
-  const generateEdgesFromTags = (list: CustomNode[]): Edge[] => {
+  const generateEdgesFromTags = (list: CustomNodeType[]): Edge[] => {
     const autoEdges: Edge[] = [];
     for (let i = 0; i < list.length; i++) {
       for (let j = i + 1; j < list.length; j++) {
@@ -135,7 +134,7 @@ const Dashboard = () => {
   const generateNodesFromChatHistory = () => {
     if (!chatSessions || chatSessions.length === 0) return;
 
-    const chatNodes: CustomNode[] = chatSessions.map((session, index) => ({
+    const chatNodes: CustomNodeType[] = chatSessions.map((session, index) => ({
       id: `chat-${session.session_id}`,
       type: 'custom',
       position: { x: 600 + (index % 3) * 150, y: 50 + Math.floor(index / 3) * 100 },
